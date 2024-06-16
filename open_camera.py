@@ -9,6 +9,7 @@ class VideoProcessor(VideoProcessorBase):
         return frame
 
 st.title("Hipster V2.0")
+qr_data=[]
 
 if st.button("Open Camera"):
     pic = st.camera_input("Take a picture")
