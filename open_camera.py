@@ -8,7 +8,7 @@ class VideoProcessor(VideoProcessorBase):
     def recv(self, frame):
         return frame
 
-st.title("Hitster V2.0")
+st.title("Hipster V2.0")
 
 if st.button("Open Camera"):
     pic = st.camera_input("Take a picture")
@@ -16,5 +16,5 @@ if st.button("Open Camera"):
     decoded_objects = decode(pic)
     qr_data = [obj.data.decode('utf-8') for obj in decoded_objects]
 
-st_player("https://www.youtube.com/watch?v=BY_XwvKogC8&list=RDBY_XwvKogC8&start_radio=1")
+st_player(qr_data[0])
 
