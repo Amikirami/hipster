@@ -1,4 +1,6 @@
 streamlit
 streamlit_player
 streamlit_webrtc
-opencv-python pyzbar
+opencv-python 
+zbar
+pyzbar
