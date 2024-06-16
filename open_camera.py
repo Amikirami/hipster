@@ -9,7 +9,6 @@ st.title("HIPSTER")
 image = st.camera_input("Show QR code")
 data = ""
 
-
 if image is not None:
     bytes_data = image.getvalue()
     cv2_img = cv2.imdecode(np.frombuffer(bytes_data, np.uint8), cv2.IMREAD_COLOR)
@@ -18,10 +17,6 @@ if image is not None:
 
 st.write(data)
 
-
 for i in range(100):
     st.write("")
-st_player(data, playing=True)
-
-st.empty()
-
+st_player(data, playing=True, play_inline=True)
