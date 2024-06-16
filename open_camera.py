@@ -1,14 +1,16 @@
-import streamlit as st
-from streamlit_player import st_player
 import cv2
+import numpy as np
+import streamlit as st
 
+image = st.camera_input("Show QR code")
 
-st.title("Hipster V2.0")
+if image is not None:
+    bytes_data = image.getvalue()
+    cv2_img = cv2.imdecode(np.frombuffer(bytes_data, np.uint8), cv2.IMREAD_COLOR)
 
-if st.button("Open Camera"):
-    pic = st.camera_input("Take a picture")
-    #pic = cv2.imread(image_path)
     detector = cv2.QRCodeDetector()
-    decoded_objects = detector.detectAndDecode(pic)
-    #qr_data = [obj.data.decode('utf-8') for obj in decoded_objects]
-    st_player(decoded_objects)
+
+    data, bbox, straight_qrcode = detector.detectAndDecode(cv2_img)
+
+    st.write("Here!")
+    st.write(data)
