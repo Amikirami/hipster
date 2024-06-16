@@ -9,13 +9,14 @@ class VideoProcessor(VideoProcessorBase):
         return frame
 
 st.title("Hipster V2.0")
-qr_data=[]
+decoded_objects=""
 
 if st.button("Open Camera"):
     pic = st.camera_input("Take a picture")
     #pic = cv2.imread(image_path)
-    decoded_objects = decode(pic)
-    qr_data = [obj.data.decode('utf-8') for obj in decoded_objects]
+    detector = cv2.QRCodeDetector()
+    decoded_objects = detector.detectAndDecode(pic)
+    #qr_data = [obj.data.decode('utf-8') for obj in decoded_objects]
 
-st_player(qr_data[0])
+st_player(decoded_objects)
 
