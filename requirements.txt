@@ -3,4 +3,3 @@ streamlit_player
 streamlit_webrtc
 opencv-python
 pyzbar
-zbar
