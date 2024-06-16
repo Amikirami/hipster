@@ -1,12 +1,6 @@
 import streamlit as st
-from streamlit_webrtc import webrtc_streamer, VideoProcessorBase
 from streamlit_player import st_player
 import cv2
-from pyzbar.pyzbar import decode
-
-class VideoProcessor(VideoProcessorBase):
-    def recv(self, frame):
-        return frame
 
 st.title("Hipster V2.0")
 decoded_objects=""
