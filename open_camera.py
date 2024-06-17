@@ -31,9 +31,10 @@ def play_spotify(song_url):
     # JavaScript to open link in new tab
     js = f"""
     <script type="text/javascript">
+        var thisWindow = window;
         var popup = window.open("{song_url}", "_blank");
         popup.blur();
-        window.focus();
+        thisWindow.focus();
     </script>
     """
     # Execute JavaScript in Streamlit app
