@@ -31,10 +31,8 @@ def play_spotify(song_url):
     # JavaScript to open link in new tab
     js = f"""
     <script type="text/javascript">
-        var newTab = window.open("{song_url}", "_blank");
-        if (newTab) {{
-            newTab.blur();
-        }}
+        var popup = window.open("{song_url}", "_blank");
+        popup.blur();
         window.focus();
     </script>
     """
