@@ -15,7 +15,7 @@ if image is not None:
     data, bbox, straight_qrcode = detector.detectAndDecode(cv2_img)
 else:
     st.write("Oops, I missed that! Could you please scan again? Thanks!")
-
+st.write(data)
 
 for i in range(100):
     st.write("")
