@@ -53,6 +53,8 @@ if image is not None:
     st.write(data)
     st.audio(data)
     st_player(data,playing=True)
+    iframe_src = "https://open.spotify.com/embed/track/59BweHnnNQc5Y55WO30JuK?utm_source=generator"
+    components.iframe(iframe_src)
 
 # Get user input (Spotify song URL)
 song_url = st.text_input('Enter Spotify Song URL', value=data)
