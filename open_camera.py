@@ -51,6 +51,7 @@ if image is not None:
     data, bbox, straight_qrcode = detector.detectAndDecode(cv2_img)
     st.write(data)
     st.audio(data)
+    st_player(data)
 
 # Get user input (Spotify song URL)
 song_url = st.text_input('Enter Spotify Song URL', value=data)
@@ -61,3 +62,5 @@ if st.button('Play Song'):
         st.success(f"Playing song from {song_url}")
     else:
         st.warning("Please enter a Spotify song URL")
+
+
