@@ -25,6 +25,7 @@ import streamlit as st
 import streamlit.components.v1 as components
 import cv2
 import numpy as np
+from streamlit_player import st_player
 
 
 def play_spotify(song_url):
