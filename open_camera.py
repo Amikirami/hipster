@@ -75,7 +75,7 @@ import time
 "# Streamlit camera input live Demo"
 "## Try holding a qr code in front of your webcam"
 
-image = camera_input_live()
+image = back_camera_input()
 
 if image is not None:
     st.image(image)
