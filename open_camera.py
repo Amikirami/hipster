@@ -71,6 +71,7 @@ import numpy as np
 import streamlit as st
 from camera_input_live import camera_input_live
 import time 
+from streamlit_back_camera_input import back_camera_input
 
 "# Streamlit camera input live Demo"
 "## Try holding a qr code in front of your webcam"
