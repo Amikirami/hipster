@@ -1,6 +1,6 @@
 streamlit
 streamlit_player
 opencv-python
-camera_input_live
+streamlit-camera-input-live
 time
 numpy
