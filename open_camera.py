@@ -4,9 +4,29 @@ import streamlit as st
 from camera_input_live import camera_input_live
 import time 
 from streamlit_back_camera_input import back_camera_input
+from cv2 import dnn_superres
+import streamlit.components.v1 as components
 
-"# Streamlit camera input live Demo"
-"## Try holding a qr code in front of your webcam"
+def play_spotify(song_url):
+    # JavaScript to open link in new tab
+    js = """
+        <script>
+            function autoplay() {
+                var t = setTimeout(function(){
+                    var button = document.querySelector('[title="Play"]') || false;
+                    if (button) {
+                        console.log('Click', button)
+                        button.click()
+                    }
+                }, 999)
+            }
+            document.addEventListener('DOMContentLoaded', (event) => {
+                autoplay()
+            })
+        </script>
+    """
+    # Execute JavaScript in Streamlit app
+    components.html(js, height=0, width=0)
 
 image = st.camera_input("take a pic")
 
@@ -26,7 +46,18 @@ if image is not None:
         with st.expander("Show details"):
             st.write("BBox:", bbox)
             st.write("Straight QR code:", straight_qrcode)
-        time.sleep(5)
-    else:
-        st.write("No QR code detected")
+        id = data.split('/')[-1]
+        iframe_src = f"https://open.spotify.com/embed/track/{id}?utm_source=generator"
+        components.iframe(iframe_src)
+
+        # Get user input (Spotify song URL)
+        song_url = st.text_input('Enter Spotify Song URL', value=data)
         
+        if st.button('Play Song'):
+            if song_url:
+                play_spotify(song_url)
+                st.success(f"Playing song from {song_url}")
+            else:
+                st.warning("Please enter a Spotify song URL")
+        else:
+            st.write("No QR code detected")
