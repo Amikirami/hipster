@@ -13,7 +13,7 @@ def play_spotify(song_url):
     </script>
     """
     # Execute JavaScript in Streamlit app
-    components.html(js, height=0, width=0)
+    components.html(js)
 
 image = st.camera_input("take a pic")
 
