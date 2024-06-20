@@ -3,11 +3,12 @@ import numpy as np
 import streamlit as st
 from camera_input_live import camera_input_live
 import time 
+from streamlit_back_camera_input import back_camera_input
 
 "# Streamlit camera input live Demo"
 "## Try holding a qr code in front of your webcam"
 
-image = camera_input_live()
+image = back_camera_input()
 
 if image is not None:
     st.image(image)
@@ -18,10 +19,10 @@ if image is not None:
 
     data, bbox, straight_qrcode = detector.detectAndDecode(cv2_img)
 
-    if data:
+    if data!='':
         st.write("# Found QR code")
         st.write(data)
         with st.expander("Show details"):
             st.write("BBox:", bbox)
             st.write("Straight QR code:", straight_qrcode)
-        time.sleep(10)
+        time.sleep(5)
