@@ -26,3 +26,6 @@ if image is not None:
             st.write("BBox:", bbox)
             st.write("Straight QR code:", straight_qrcode)
         time.sleep(5)
+    else:
+        st.write("No QR code detected")
+        
