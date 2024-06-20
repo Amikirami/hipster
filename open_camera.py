@@ -7,20 +7,10 @@ from PIL import Image
 def play_spotify(song_url):
     # JavaScript to open link in new tab
     js = """
-        <script>
-            function autoplay() {
-                var t = setTimeout(function(){
-                    var button = document.querySelector('[title="Play"]') || false;
-                    if (button) {
-                        console.log('Click', button)
-                        button.click()
-                    }
-                }, 999)
-            }
-            document.addEventListener('DOMContentLoaded', (event) => {
-                autoplay()
-            })
-        </script>
+    <script>
+        var xPathRes = document.evaluate('/html/body/div/div/div/div[2]/div[4]/div[3]/button', document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null);
+        xPathRes.singleNodeValue.click();
+    </script>
     """
     # Execute JavaScript in Streamlit app
     components.html(js, height=0, width=0)
