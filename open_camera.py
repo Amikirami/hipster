@@ -12,7 +12,9 @@ image = back_camera_input()
 
 if image is not None:
     st.image(image)
-    bytes_data = image.getvalue()
+    mirrored_image = cv2.flip(image, 1)
+    
+    bytes_data = mirrored_image.getvalue()
     cv2_img = cv2.imdecode(np.frombuffer(bytes_data, np.uint8), cv2.IMREAD_COLOR)
 
     detector = cv2.QRCodeDetector()
