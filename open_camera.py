@@ -8,13 +8,12 @@ from streamlit_back_camera_input import back_camera_input
 "# Streamlit camera input live Demo"
 "## Try holding a qr code in front of your webcam"
 
-image = back_camera_input()
+image = camera_input()
 
 if image is not None:
     st.image(image)
-    mirrored_image = cv2.flip(image, 1)
     
-    bytes_data = mirrored_image.getvalue()
+    bytes_data = image.getvalue()
     cv2_img = cv2.imdecode(np.frombuffer(bytes_data, np.uint8), cv2.IMREAD_COLOR)
 
     detector = cv2.QRCodeDetector()
