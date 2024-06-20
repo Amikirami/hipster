@@ -36,9 +36,9 @@ if image is not None:
     detector = cv2.QRCodeDetector()
 
     data, bbox, straight_qrcode = detector.detectAndDecode(cv2_img)
-    data = Image.fromarray(data[2])
-    data = data.resize((256,256))
-    st.image(data)
+    straight_qrcode = Image.fromarray(straight_qrcode)
+    straight_qrcode = straight_qrcode.resize((256,256))
+    st.image(straight_qrcode)
 
     if data!='':
         st.write("# Found QR code")
