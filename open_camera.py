@@ -1,11 +1,9 @@
 import cv2
 import numpy as np
 import streamlit as st
-from camera_input_live import camera_input_live
 import time 
-from streamlit_back_camera_input import back_camera_input
-from cv2 import dnn_superres
 import streamlit.components.v1 as components
+from PIL import Image
 
 def play_spotify(song_url):
     # JavaScript to open link in new tab
@@ -31,7 +29,6 @@ def play_spotify(song_url):
 image = st.camera_input("take a pic")
 
 if image is not None:
-    st.image(image)
     
     bytes_data = image.getvalue()
     cv2_img = cv2.imdecode(np.frombuffer(bytes_data, np.uint8), cv2.IMREAD_COLOR)
@@ -39,6 +36,9 @@ if image is not None:
     detector = cv2.QRCodeDetector()
 
     data, bbox, straight_qrcode = detector.detectAndDecode(cv2_img)
+    data = Image.fromarray(data[2])
+    data = data.resize((256,256))
+    st.image(data)
 
     if data!='':
         st.write("# Found QR code")
