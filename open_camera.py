@@ -1,7 +1,6 @@
 import cv2
 import numpy as np
 import streamlit as st
-import time 
 import streamlit.components.v1 as components
 from PIL import Image
 
@@ -36,11 +35,12 @@ if image is not None:
     detector = cv2.QRCodeDetector()
 
     data, bbox, straight_qrcode = detector.detectAndDecode(cv2_img)
-    straight_qrcode = Image.fromarray(straight_qrcode)
-    straight_qrcode = straight_qrcode.resize((256,256))
-    st.image(straight_qrcode)
+    
 
     if data!='':
+        straight_qrcode = Image.fromarray(straight_qrcode)
+        straight_qrcode = straight_qrcode.resize((256,256))
+        st.image(straight_qrcode)
         st.write("# Found QR code")
         st.write(data)
         with st.expander("Show details"):
